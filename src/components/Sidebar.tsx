@@ -2,13 +2,13 @@ import { ChevronFirst, ChevronLast, MoreVertical } from 'lucide-react';
 import { createContext, ReactNode, useContext, useState } from 'react';
 
 interface SidebarProps {
-  children: ReactNode; // Define que "children" é um nó React
+  children: ReactNode; 
 }
 
 
 const SidebarContext = createContext({ expanded: true });  
 export default function Sidebar({ children }: SidebarProps) {
-  const [expanded, setExpaned] = useState(true);
+  const [expanded, setExpanded] = useState(true);
 
   return (
     <aside className='h-screen'>
@@ -22,16 +22,17 @@ export default function Sidebar({ children }: SidebarProps) {
             alt=''
           ></img>
           <button
-            onClick={() => setExpaned((current) => !current)}
+            onClick={() => setExpanded((current) => !current)}
             className='p-1.5 rounded-lg bg-gray-50 hover:bg-gray-100'
           >
             {expanded ? <ChevronFirst /> : <ChevronLast />}
           </button>
         </div>
-        <SidebarContext.Provider value={{expanded}}>
 
+        <SidebarContext.Provider value={{expanded}}>
+            <ul className="flex-1 px-3">{children}</ul>
         </SidebarContext.Provider>
-        <ul className='flex-1 px-3'>{children}</ul>
+
         <div className='border-t flex p-3'>
           <img
             src='https://ui-avatars.com/api/?background=c7d2fe&color=3730a3&bold=true'
@@ -92,7 +93,9 @@ export function SidebarItem({ icon, text, active, alert }: SidebarItemProps) {
 
       {!expanded && (<div className={`
         absolute left-full rounded-md px-2 py-1 ml-6
-        bg-indigo-100 text-indigo-800 text-sm 
+          bg-indigo-100 text-indigo-800 text-sm
+          invisible opacity-20 -translate-x-3 transition-all
+          group-hover:visible group-hover:opacity-100 group-hover:translate-x-0
       `}>{text}</div>
       )
       }
