@@ -1,6 +1,6 @@
 {
   "name": "sidebar",
-  "homepage": "https://pablomelo-inf.github.io/sidebar_prototype/dist/",
+  "homepage": "https://pablomelo-inf.github.io/sidebar_prototype",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,7 +9,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "predeploy": "npm run build",
+    "predeploy": "yarn run build",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
