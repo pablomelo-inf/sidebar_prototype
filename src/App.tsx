@@ -9,7 +9,7 @@ import {
   UserCircle,
 } from 'lucide-react';
 import './App.css';
-import Sidebar, { SidebarItem } from './components/SidebarRefactor';
+import Sidebar, { SidebarItem } from './components/Sidebar';
 
 function App() {
   return (
